@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      max-width: 360px;
+      animation: popIn 1s ease;
+      z-index: 1;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .love {
+      font-size: 1.3em;
+      margin-top: 20px;
+      color: #d6336c;
+      font-weight: bold;
+    }
+
+    .emoji {
+      font-size: 2.2em;
+      margin: 15px 0;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .question {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .buttons {
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes {
+      background: #ff5c8a;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+      color: #333;
+    }
+
+    .response {
+      margin-top: 15px;
+      font-size: 1.1em;
+      min-height: 30px;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: fall linear infinite;
+      color: #ff5c8a;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="emoji">🥺💗</div>
+
+    <h1 id="title">I’m Sorry</h1>
+
+    <p>
+      Dherai pressure vayera hola,<br>
+      sayed sabai ris timi mathi utarey
+    </p>
+
+    <p>
+      Jati j sukai vayeni,<br>
+      euta kura yaad rakhnu
+    </p>
+
+    <div class="love">
+      I really love you ❤️
+    </div>
+
+    <div class="question">You still love me ni haii?</div>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💕</button>
+      <button class="no" onclick="noClicked()">No 😐</button>
+    </div>
+
+    <div class="response" id="response"></div>
+
+    <div class="emoji">🌸💞</div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.2; // soft volume
+
+    // Play music on first click or touch
+    document.body.addEventListener('click', function playMusic() {
+      music.play().catch(e => console.log(e)); // just in case
+      document.body.removeEventListener('click', playMusic); // only once
+    });
+  </script>
+
+  <script>
+    // Ask for her name dynamically
+    let herName = prompt("What is your name, love?") || "Navina";
+    document.getElementById("nameText").innerText = herName;
+    document.getElementById("title").innerText = `I’m Sorry ${herName}`;
+
+    function yesClicked() {
+      document.getElementById("response").innerHTML =
+        "I knew it, hehe 😇💖";
+    }
+
+    function noClicked() {
+      document.getElementById("response").innerHTML =
+        "Nooo 😢 you are lying… Think again  🥺";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = Math.random() > 0.5 ? "💖" : "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Optional: reduce music volume for gentle effect
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.2;
+  </script>
+
+</body>
+
+</html>
