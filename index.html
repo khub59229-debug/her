@@ -147,11 +147,11 @@
   <div class="card">
     <div class="emoji">🥺💗</div>
 
-    <h1 id="title">I’m Sorry</h1>
+    <h1>I’m Sorry Navina</h1>
 
     <p>
       Dherai pressure vayera hola,<br>
-      sayed sabai ris timi mathi utarey
+      sayed sabai ris timi mathi utarey <span id="nameText"></span>
     </p>
 
     <p>
@@ -174,7 +174,6 @@
 
     <div class="emoji">🌸💞</div>
   </div>
-
   <audio id="bgMusic" loop>
     <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -191,12 +190,8 @@
     });
   </script>
 
-  <script>
-    // Ask for her name dynamically
-    let herName = prompt("What is your name, love?") || "Navina";
-    document.getElementById("nameText").innerText = herName;
-    document.getElementById("title").innerText = `I’m Sorry ${herName}`;
 
+  <script>
     function yesClicked() {
       document.getElementById("response").innerHTML =
         "I knew it, hehe 😇💖";
@@ -221,10 +216,6 @@
     }
 
     setInterval(createHeart, 300);
-
-    // Optional: reduce music volume for gentle effect
-    const music = document.getElementById("bgMusic");
-    music.volume = 0.2;
   </script>
 
 </body>
